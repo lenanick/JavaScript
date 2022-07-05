@@ -14,90 +14,57 @@
  
    
    ```js
-   function stringValidation(str) {
-   if (checkStringAsNotNull(str)) {
-       console.log("Error, String is empty");
-   }
+ let email = "L2504g@t";
 
-   if (typeof (str) !== 'string') {
-       console.log('The value is not String!');
-   }
-   if (str.length < 5) {
-       console.log('The string must have a minimum 5 symbols!');
-   }
-   if (str.length > 64) {
-       console.log('The string must have a maximum 64 symbols!');
-   }
+function input_length (string) {
+let isValid = string.length > 4 && email.length < 65
+!isValid ? console.log("В поле ввести от 5 до 64 символов") : null;
+return isValid
+}
 
-   checkStringHasLetters(str);
-   checkStringHasLettersInUpperCase(str);
-   checkStringHasAtSymbol(str);
-   checkStringHasNumber(str);
-   }
+function words_small (string) {
+   let isValid = /[a-zA-Z]/g.test(string)
+   !isValid ? console.log("В поле необходимо ввести латинские символы") :null; 
+   return isValid   
+ }
 
-   function checkStringAsNotNull(str) {
-   return (str = '' && str.length == 0)
-   }
+function words_big (string) {
+   let isValid = /[A-Z]/g.test(string) 
+   !isValid ? console.log("В поле необходимо ввести одну большую букву") :null;
+   return isValid    
+ }
 
-   function isLetter(str) {
-   return (str >= 'a' && str <= 'z') || (str >= 'A' && str <= 'Z');
-   }
+function numbers (string) {
+  let isValid = /\d/g.test(string) 
+  !isValid ? console.log('В поле необходимо ввести одну цифру') :null;
+  return isValid
+}      
+   
+function symbol (string) {
+   let  isValid = /@/g.test(string)
+   !isValid ? console.log("В поле необходимо ввести символ - @ ") :null;
+   return isValid
+ }
 
-   function isLetterInUpperCase(str) {
-   return (str >= 'A' && str <= 'Z');
-   }
+ function isEmpty (string) {
+   let isValid = string.length !== 0 
+   !isValid ? console.log("Строка не должна быть пустой!") :null;
+   return isValid
+  
+}
 
-   function isNumber(str) {
-   return (str > 0 && str <= 9);
-   }
+function validation(string) {
+ let valid_results = [];
+ 
+ valid_results.push(input_length(string))
+ valid_results.push(words_small(string))
+ valid_results.push(words_big(string))
+ valid_results.push(numbers(string))
+ valid_results.push(symbol(string))
+ valid_results.push(isEmpty(string))
 
-   function checkStringHasLetters(str) {
-   for (let index = 0; index < str.length; index++) {
-       const charAtIndex = str[index];
-       const result = isLetter(charAtIndex);
-       if (result === true) {
-           return;
-       }
-    }
+valid_results.includes(false) ? console.log('-- Исправьте строку --') : console.log('OK')
+}
 
-   console.log('String must have minimum one letter!');
-  }
-
-   function checkStringHasLettersInUpperCase(str) {
-   for (let index = 0; index < str.length; index++) {
-       const charAtIndex = str[index];
-       const result = isLetterInUpperCase(charAtIndex);
-       if (result === true) {
-           return;
-       }
-   }
-
-   console.log('String must have minimum one upper letter!');
-   }
-
-   function checkStringHasNumber(str) {
-   for (let index = 0; index < str.length; index++) {
-       const charAtIndex = str[index];
-       const result = isNumber(charAtIndex);
-       if (result === true) {
-           return;
-       }
-   }
-
-   console.log('String must have minimum one number!');
-   }
-
-   function checkStringHasAtSymbol(str) {
-   for (let index = 0; index < str.length; index++) {
-       const charAtIndex = str[index];
-       const result = charAtIndex === '@';
-       if (result === true) {
-           return;
-       }
-   }
-
-   console.log('String must have a @ symbol!');
-  }
-
-   stringValidation('GOOD JOB');
+validation(email)
 ```
