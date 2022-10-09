@@ -58,7 +58,11 @@ let item_6 = 15;
 let item_6_type = typeof item_6
 ```
 
- 23. Вывести в консоль тип данных `item_6` в виде ——  `“item_6 == ” item_6`,  `“item_6_type == ”  item_6_type` ——  
+ 21. Вывести в консоль тип данных item_6 в виде ——  “item_6 == ” item_6, “item_6_type == ”  item_6_type ——  
+```js
+console.log("item_6 == " +typeof(item_6), "item_6_type ==" + item_6_type)
+```
+
  24. Создать переменную `item_7` и в ней преобразовать `item_6` в `String`.
  25. Создать переменную `item_7_type`
  26. Присвоить переменной `item_7_type` тип переменной `tem_7`
